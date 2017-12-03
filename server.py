@@ -34,7 +34,7 @@ key1 = '/homedir/.ssh/id_rsa'
 #command to execute on client side - put script in temp and execute it
 com1 = "cp /pathtoclientscript/unixcmd.py /var/tmp \n python /var/tmp/unixcmd.py "
 
-#DB connection detail, used postgresql here
+#DB connection detail, used postgresql db here
 conn = ps.connect(database="testpython",user="nikki",password="nikki",host="localhost",port="5432")
 cur = conn.cursor()
 
