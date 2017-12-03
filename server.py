@@ -17,8 +17,8 @@ random_generator = Random.new().read
 #read client details from client config xml on server side
 e=ET.parse('client1.xml').getroot()
 hostname = e.get('ip')
-username= 'nikki'
-password= 'nikki@123'
+username= 'username'
+password= 'userpassword'
 port    = e.get('port')
 
 #read cpu and mem usage alert from client xml
@@ -29,10 +29,10 @@ for type1 in e.findall('alert'):
 
 list_read = []
 #generate key for paramiko  
-key1 = '/home/nikki/.ssh/id_rsa'
+key1 = '/homedir/.ssh/id_rsa'
 
 #command to execute on client side - put script in temp and execute it
-com1 = "cp /home/nikki/nikki/python/pythonnetworking/unixcmd.py /var/tmp \n python /var/tmp/unixcmd.py "
+com1 = "cp /pathtoclientscript/unixcmd.py /var/tmp \n python /var/tmp/unixcmd.py "
 
 #DB connection detail, used postgresql here
 conn = ps.connect(database="testpython",user="nikki",password="nikki",host="localhost",port="5432")
@@ -97,10 +97,10 @@ mem_alert1 = float(mem_alert)
 #Mail sending part
 
 #assumption- the event log is the output of commands run at client
-gmail_user = "mukeshp12z@gmail.com"
-gmail_pwd= "clement_12z"
-FROM = "mukeshp12z@gmail.com"
-TO = "mukesh.pusola@gmail.com"
+gmail_user = "gmailid@gmail.com"
+gmail_pwd= "gmailpwd"
+FROM = "gmailid@gmail.com"
+TO = "touserid@gmail.com"
 
 message = "PFA the event log"
 
@@ -113,8 +113,8 @@ if cpu_usage > cpu_alert:
 try:
     content = MIMEText(message, "plain")
     msg = MIMEMultipart('mixed')
-    msg["From"] = "mukeshp12z@gmail.com"
-    msg["To"] = "mukesh.pusola@gmail.com"
+    msg["From"] = "gmailid@gmail.com"
+    msg["To"] = "touserid@gmail.com"
     msg["Subject"] = "System statistics"
     msg.attach(content)
     filename1 = "outfile"
